@@ -1,0 +1,457 @@
+body,
+* {
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20px;
+}
+
+.container {
+  height: 15vh;
+  border-bottom: 1px solid black;
+  width: 100%;
+  margin: 0%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  height: 15vh;
+}
+
+.header-left {
+  margin-left: 2.5%;
+}
+
+.header-right {
+  margin-right: 2.5%;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 2.5rem;
+  border-bottom: 1px solid black;
+}
+
+.modal-left {
+  float: left;
+  border-right: 1px solid black;
+}
+
+.modal-right {
+  float: right;
+  width: 50%;
+  margin-left: 15px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200px;
+}
+
+.modal-buttons {
+  margin-top: 25px;
+}
+
+.signup-buttons {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signup-title {
+  font-size: 1.9rem;
+}
+
+.menu {
+  display: flexbox;
+  position: absolute;
+  left: 92%;
+  top: 10%;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: auto auto;
+  height: fit-content;
+}
+
+.home-left {
+  border: 1px solid black;
+  width: 90%;
+  margin-left: 3%;
+  margin-top: 15px;
+}
+
+.home-left-title {
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.single-dough {
+  margin-top: 5px;
+  border-bottom: 1px solid black;
+}
+
+.single-title {
+  font-size: 1.5rem;
+  margin-left: 5px;
+}
+
+.single-dough-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.single-description {
+  text-align: center;
+  font-size: 17px;
+}
+
+.single-dough:last-child {
+  border-bottom: none;
+}
+
+.home-right {
+  width: 90%;
+  border: 1px solid black;
+  margin-top: 15px;
+}
+
+.ingredients-single {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.ingredients-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.single-order {
+  border-bottom: 1px solid black;
+}
+
+.single-order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.single-order-ingredients {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.orders-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
+}
+
+.adress {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  margin-top: 15px;
+  border: 1px solid black;
+}
+
+.adress-title {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.adress-s {
+  display: flex;
+  margin: 1%;
+}
+
+.adress-single {
+  width: 150px;
+  border: 1px solid black;
+  margin-left: 1%;
+  height: 150px;
+  text-align: center;
+}
+
+.adress-single-add {
+  margin-left: 1%;
+  width: 150px;
+  height: 150px;
+}
+
+.adress-single-add-btn {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+.adress-single-add-btn:hover {
+  opacity: 1;
+}
+
+.adress-form {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+}
+
+.adress-form-input {
+  width: 140px;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+.adress-form-add {
+  margin-left: 35%;
+}
+
+.adress-single-choosen {
+  width: 150px;
+  border: 1px solid red;
+  margin-left: 1%;
+  height: 150px;
+  text-align: center;
+}
+
+.payment {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  margin-top: 15px;
+  border: 1px solid black;
+}
+
+.payment-choice {
+  text-align: center;
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.payment-title {
+  margin-left: 30%;
+}
+
+.payment-input {
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.payment-checkbox {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.payment-order-title {
+  text-align: center;
+}
+
+.order-single {
+  margin-left: 5%;
+}
+
+.payment-order-p {
+  margin-left: 5%;
+  font-size: 0.8rem;
+}
+
+.payment-order {
+  border-bottom: 1px solid black;
+}
+
+.price {
+  float: right;
+  margin-right: 15%;
+}
+
+b {
+  margin-left: 5%;
+}
+
+.payment-notes {
+  margin-left: 5%;
+}
+
+textarea {
+  width: 90%;
+}
+
+.final {
+  height: 80vh;
+}
+
+.history {
+  border: 1px solid black;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 15px;
+  height: fit-content;
+}
+
+.history-title {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid black;
+}
+
+.history:last-child {
+  border-bottom: none;
+}
+
+.history-single {
+  border-bottom: 1px solid black;
+}
+
+.history-single-first {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.history-single-second {
+  display: inline;
+  margin-left: 5%;
+}
+
+.history-single-ingredients {
+  display: inline;
+  font-size: 0.8rem;
+}
+
+.history-single-date {
+  font-size: 0.8rem;
+  float: right;
+  margin-right: 5%;
+}
+
+.history-single-name {
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 1440px) {
+  .menu {
+    left: 91%;
+    top: 10.5%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body,
+  * {
+    font-size: 15px;
+  }
+
+  .home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .home-left {
+    width: 45%;
+    font-size: 10px;
+    margin-right: 0px;
+  }
+
+  .home-right {
+    width: 45%;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+
+  .menu {
+    left: 89.5%;
+    top: 10%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body,
+  * {
+    font-size: 12px;
+  }
+
+  .bi-cart4 {
+    margin-left: 30% !important;
+  }
+
+  .menu {
+    left: 85%;
+    top: 9.5%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  body,
+  * {
+    font-size: 12px;
+  }
+
+  .home {
+    display: block;
+  }
+
+  .home-left {
+    width: 90%;
+    margin: 5%;
+  }
+
+  .home-right {
+    width: 90%;
+    margin: 5%;
+  }
+
+  .modal-content {
+    height: fit-content !important;
+  }
+
+  .modal-footer {
+    margin-top: 15px !important;
+    display: inline;
+    margin-left: 0px !important;
+  }
+
+  .modal-left {
+    float: none;
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-right {
+    float: none;
+    border: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .menu {
+    left: 70%;
+    top: 9.5%;
+  }
+}
