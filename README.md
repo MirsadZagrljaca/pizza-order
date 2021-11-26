@@ -8,7 +8,7 @@
 
 # To run it you should
 
-- git clone https://github.com/MirsadZagrljaca/pizza-order-composer
+- git clone https://github.com/MirsadZagrljaca/pizza-order
 - cd client && npm install && npm start and open browser at localhost:3000
 - cd server && npm install && npm start
 
