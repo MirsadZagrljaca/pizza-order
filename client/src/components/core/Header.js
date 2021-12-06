@@ -13,10 +13,6 @@ export default function Header({
 
   useEffect(() => {
     if (localStorage.getItem("token")) setIsSignedIn(true);
-
-    if (!localStorage.getItem("token")) {
-      openModal();
-    }
   }, []);
 
   const clickHandler = (e) => {

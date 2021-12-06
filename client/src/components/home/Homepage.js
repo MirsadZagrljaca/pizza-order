@@ -44,7 +44,9 @@ export default function Homepage({
   }, [currentOrder]);
 
   useEffect(() => {
-    if (orders.length === 0) return;
+    if (orders.length === 0) {
+      return setTotalPrice(0);
+    }
 
     setTotalPrice(totalPrice + currentOrder.price);
     setCurrentOrder({
@@ -73,12 +75,18 @@ export default function Homepage({
   };
 
   const addToCart = (order, price) => {
-    setCurrentOrder({
-      dough: currentOrder.dough,
-      price: currentOrder.price + price,
-      ingredients: order,
-      times: 1,
-    });
+    if (order.length !== 0 && price !== 0) {
+      setCurrentOrder({
+        dough: currentOrder.dough,
+        price: currentOrder.price + price,
+        ingredients: order,
+        times: 1,
+      });
+      closeModal();
+    } else {
+      setOrders([...orders, currentOrder]);
+    }
+
     setisOrderOn(true);
 
     closeModal();
@@ -113,11 +121,20 @@ export default function Homepage({
         {isOrderOn ? (
           <div className="orders">
             {orders.map((value, index) => {
-              return <OrderList value={value} key={index} index={index} />;
+              return (
+                <OrderList
+                  value={value}
+                  key={index}
+                  index={index}
+                  orders={orders}
+                  setOrders={setOrders}
+                />
+              );
             })}
             <div className="orders-footer">
               <p className="orders-total-price">
-                Total Price: {totalPrice}
+                Delivery Fee 5$ <br />
+                Total Price: {totalPrice + 5}
                 {" $"}
               </p>
               <Button variant="outline-primary" onClick={buy}>

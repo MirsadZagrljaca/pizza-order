@@ -1,19 +1,20 @@
 {
   "ingredients": [
-    { "name": "Mozzarella Cheese", "price": 1 },
-    { "name": "Parmesan Cheese", "price": 1 },
-    { "name": "Cheddar Cheese", "price": 2 },
-    { "name": "Feta Cheese", "price": 1 },
-    { "name": "Sliced Black Olives", "price": 1.5 },
-    { "name": "Sliced Green Olives", "price": 1 },
-    { "name": "Hot sauce", "price": 2 },
-    { "name": "Romaine Lettuce", "price": 0.5 },
-    { "name": "Chopped Artichoke Hearts", "price": 1.5 },
-    { "name": "Chopped Tomato", "price": 1 },
-    { "name": "Sliced Green Onion", "price": 1 },
-    { "name": "Mushrooms", "price": 1 },
-    { "name": "Sprinkle Dry Oregano", "price": 0.5 },
-    { "name": "Ham", "price": 1 },
-    { "name": "Peperoni", "price": 1 }
+    { "name": "Mozzarella Cheese", "price": 1, "gluten_free": true },
+    { "name": "Parmesan Cheese", "price": 1, "gluten_free": true },
+    { "name": "Parmesan Cheese", "price": 1, "gluten_free": false },
+    { "name": "Cheddar Cheese", "price": 2, "gluten_free": true },
+    { "name": "Feta Cheese", "price": 1, "gluten_free": true },
+    { "name": "Sliced Black Olives", "price": 1.5, "gluten_free": true },
+    { "name": "Sliced Green Olives", "price": 1, "gluten_free": true },
+    { "name": "Hot sauce", "price": 2, "gluten_free": true },
+    { "name": "Romaine Lettuce", "price": 0.5, "gluten_free": false },
+    { "name": "Chopped Artichoke Hearts", "price": 1.5, "gluten_free": true },
+    { "name": "Chopped Tomato", "price": 1, "gluten_free": true },
+    { "name": "Sliced Green Onion", "price": 1, "gluten_free": true },
+    { "name": "Mushrooms", "price": 1, "gluten_free": true },
+    { "name": "Sprinkle Dry Oregano", "price": 0.5, "gluten_free": true },
+    { "name": "Ham", "price": 1, "gluten_free": true },
+    { "name": "Peperoni", "price": 1, "gluten_free": true }
   ]
 }

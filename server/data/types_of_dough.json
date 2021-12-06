@@ -3,22 +3,26 @@
     {
       "name": "New York Style Dough",
       "price": 17,
-      "description": "Thin crust - all-purpose or bread flour, sugar, salt, instant yeast, olive oil and water"
+      "description": "Thin crust - all-purpose or bread flour, sugar, salt, instant yeast, olive oil and water",
+      "gluten_free": false
     },
     {
       "name": "Sicilian Style Dough",
       "price": 15,
-      "description": "Grilled dough - bread flour, salt, instant yeast and water"
+      "description": "Grilled dough - bread flour, salt, instant yeast and water",
+      "gluten_free": false
     },
     {
       "name": "Neapolitan Style Dough",
       "price": 9,
-      "description": "Square pizza - all purpose or bread flour, salt, instant yeast, olive oil and water"
+      "description": "Square pizza - all purpose or bread flour, salt, instant yeast, olive oil and water",
+      "gluten_free": false
     },
     {
       "name": "Gluten Free Dough",
       "price": 25,
-      "description": "Gluten free bread flour, sugar, fine salt, baking powder, xanthan gum and olive oil"
+      "description": "Gluten free bread flour, sugar, fine salt, baking powder, xanthan gum and olive oil",
+      "gluten_free": true
     }
   ]
 }

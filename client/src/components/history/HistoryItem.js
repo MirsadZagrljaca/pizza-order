@@ -5,7 +5,7 @@ export default function HistoryItem({ value }) {
     <div>
       <div className="history-single">
         <div className="history-single-first">
-          <p className="history-single-name">{value.dough}</p>
+          <p className="history-single-name">{value.dough} x{value.times}</p>
           <p className="history-single-price">
             {value.total}
             {" $"}

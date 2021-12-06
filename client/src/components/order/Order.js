@@ -16,6 +16,7 @@ export default function Order() {
   const [choosenIndex, setchoosenIndex] = useState(0);
   const [total, seTtotal] = useState(0);
   const [history, setHistory] = useState([]);
+  const [render, setRender] = useState(false);
 
   const handleChange = (name) => (e) => {
     setValues({ ...values, [name]: e.target.value });
@@ -49,8 +50,6 @@ export default function Order() {
     if (history.length === 0) return;
 
     localStorage.setItem("history", JSON.stringify(history));
-
-    console.log(history);
   }, [history]);
 
   useEffect(() => {
@@ -76,12 +75,41 @@ export default function Order() {
     }
   };
 
+  const removeAdress = (index, e) => {
+    let tempAdresses = [];
+
+    adress.map((v, i) => {
+      if (i !== index) {
+        tempAdresses.push(v);
+      }
+    });
+
+    localStorage.setItem("adress", tempAdresses);
+    setAdress(tempAdresses);
+  };
+
   const chooseAdress = (index, e) => {
     setChoosenAdress(adress[index]);
     setchoosenIndex(index);
+
+    let inputs = [];
+
+    adress.map((v, i) => {
+      if (index !== i) {
+        inputs.push(document.getElementById("input-radio-" + i));
+      }
+    });
+
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].checked = false;
+    }
   };
 
   const orderHandler = (e) => {
+    if (choosenAdress.adress === "") {
+      return alert("Please Pick an Adress!");
+    }
+
     let user = JSON.parse(localStorage.getItem("token"));
     let id = user.user._id;
     let now = new Date();
@@ -106,14 +134,13 @@ export default function Order() {
       }
     }
 
-    console.log(dough, ingredients);
-
     let tempHistory = {
       userId: id,
       total: total,
       date: date,
       dough: dough,
       ingredients: ingredients,
+      times: order[0].times,
     };
 
     if (history.length === 0) {
@@ -127,6 +154,55 @@ export default function Order() {
     }
   };
 
+  const plus = (index, e) => {
+    let newOrders = order;
+    let basePrice = newOrders[index].price / newOrders[index].times;
+
+    for (let i = 0; i < order.length; i++) {
+      if (i === index) {
+        newOrders[i].times++;
+        newOrders[i].price += basePrice;
+      }
+    }
+
+    setOrder(newOrders);
+    updateTotal();
+    setRender(!render);
+  };
+
+  const minus = (index, e) => {
+    let newOrders = order;
+    let basePrice = newOrders[index].price / newOrders[index].times;
+
+    let tempOrders = [];
+
+    if (order[index].times === 1) {
+      return;
+    } else {
+      for (let i = 0; i < order.length; i++) {
+        if (i === index) {
+          newOrders[i].times--;
+          newOrders[i].price -= basePrice;
+        }
+      }
+
+      setOrder(newOrders);
+    }
+    updateTotal();
+
+    setRender(!render);
+  };
+
+  const updateTotal = () => {
+    let tempTotal = 0;
+    for (let i = 0; i < order.length; i++) {
+      tempTotal += order[i].price;
+    }
+    tempTotal += 5;
+
+    seTtotal(tempTotal);
+  };
+
   return (
     <div className="final">
       <div className="adress">
@@ -134,23 +210,23 @@ export default function Order() {
         <div className="adress-s">
           {adress.map((value, index) => {
             return (
-              <div
-                className={
-                  index === choosenIndex
-                    ? "adress-single-choosen"
-                    : "adress-single"
-                }
-                key={index}
-              >
-                <p className="adress-single-adress">{value.adress}</p>
-                <p className="adress-single-floor">{value.floor}</p>
+              <div className="adress-single" key={index}>
+                <div className="adress-single-top">
+                  <input
+                    id={"input-radio-" + index}
+                    type="radio"
+                    onClick={(e) => chooseAdress(index, e)}
+                  />
+                  <p className="adress-single-adress">{value.adress}</p>
+                  <p className="adress-single-floor">{value.floor}</p>
+                </div>
                 <button
                   className="adress-choose"
                   onClick={(e) => {
-                    chooseAdress(index, e);
+                    removeAdress(index, e);
                   }}
                 >
-                  Choose
+                  Remove
                 </button>
               </div>
             );
@@ -188,20 +264,32 @@ export default function Order() {
       <div className="payment">
         <div className="payment-choice">
           <h2 className="payment-title">Payment</h2>
-          <input
-            type="checkbox"
-            className="payment-input"
-            defaultChecked={true}
-          />
+          <input type="radio" className="payment-input" defaultChecked={true} />
           <p className="payment-checkbox">Upon Delivery</p>
         </div>
         <div className="payment-order">
           <h2 className="payment-order-title">Order</h2>
           {order.map((value, index) => {
             return (
-              <p className="order-single" key={index}>
-                {value.dough} <span className="price">{value.price} $</span>
-              </p>
+              <div className="order-single" key={index}>
+                <p>{value.dough}</p>{" "}
+                <div className="single-quantity">
+                  <Button
+                    variant="outline-dark"
+                    onClick={(e) => minus(index, e)}
+                  >
+                    -
+                  </Button>
+                  {value.times}
+                  <Button
+                    variant="outline-dark"
+                    onClick={(e) => plus(index, e)}
+                  >
+                    +
+                  </Button>
+                </div>
+                <span className="price">{value.price} $</span>
+              </div>
             );
           })}
           <p className="payment-order-p">
