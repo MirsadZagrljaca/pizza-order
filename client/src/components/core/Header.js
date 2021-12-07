@@ -12,7 +12,7 @@ export default function Header({
   const [menu, setMenu] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) setIsSignedIn(true);
+    if (sessionStorage.getItem("token")) setIsSignedIn(true);
   }, []);
 
   const clickHandler = (e) => {

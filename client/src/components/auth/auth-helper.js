@@ -1,6 +1,6 @@
 function authenticate(token, callback) {
   if (typeof window !== "undefined")
-    localStorage.setItem("token", JSON.stringify(token));
+    sessionStorage.setItem("token", JSON.stringify(token));
 
   callback();
 }
@@ -10,11 +10,11 @@ function isAuthenticated() {
 
   if (!localStorage.getItem("token")) return false;
 
-  return JSON.parse(localStorage.getItem("token"));
+  return JSON.parse(sessionStorage.getItem("token"));
 }
 
 function clearToken(callback) {
-  if (typeof window !== "undefined") localStorage.removeItem("token");
+  if (typeof window !== "undefined") sessionStorage.removeItem("token");
 
   callback();
 }

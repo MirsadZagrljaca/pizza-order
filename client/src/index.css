@@ -386,6 +386,15 @@ textarea {
   gap: 25px;
   justify-content: center;
 }
+.btn-outline-primary {
+  height: 50px;
+}
+
+.btn-outline-primary:disabled {
+  cursor: not-allowed !important;
+  border-color: red !important;
+  color: red !important;
+}
 
 @media screen and (max-width: 2560px) {
   .order-single {

@@ -110,7 +110,7 @@ export default function Order() {
       return alert("Please Pick an Adress!");
     }
 
-    let user = JSON.parse(localStorage.getItem("token"));
+    let user = JSON.parse(sessionStorage.getItem("token"));
     let id = user.user._id;
     let now = new Date();
     let date =
@@ -307,8 +307,13 @@ export default function Order() {
           variant="outline-primary"
           onClick={orderHandler}
           style={{ marginLeft: "40%", marginBottom: "15px" }}
+          disabled={choosenAdress.adress === ""}
         >
-          O R D E R
+          {choosenAdress.adress === "" ? (
+            <p>Please Select an Adress</p>
+          ) : (
+            <p>O R D E R</p>
+          )}
         </Button>
       </div>
     </div>

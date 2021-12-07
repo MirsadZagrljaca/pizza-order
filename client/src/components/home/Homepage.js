@@ -93,7 +93,7 @@ export default function Homepage({
   };
 
   const buy = (e) => {
-    if (!localStorage.getItem("token")) return alert("Please Sign In!");
+    if (!sessionStorage.getItem("token")) return alert("Please Sign In!");
 
     sessionStorage.setItem("order", JSON.stringify(orders));
 

@@ -5,7 +5,7 @@ export default function History() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    if (!localStorage.getItem("token") || !localStorage.getItem("history")) {
+    if (!sessionStorage.getItem("token") || !localStorage.getItem("history")) {
       return window.location.assign("/");
     }
 
