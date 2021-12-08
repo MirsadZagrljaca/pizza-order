@@ -11,6 +11,7 @@ export default function Homepage({
   setOrders,
   isOrderOn,
   setisOrderOn,
+  openSignIn,
 }) {
   const [dough, setDough] = useState([]);
   const [ingredients, setIngredients] = useState([]);
@@ -95,7 +96,7 @@ export default function Homepage({
 
   const buy = (e) => {
     if (!sessionStorage.getItem("token")) {
-      setMsg("Please Sign In Before Trying to Buy!");
+      openSignIn();
       return;
     }
 
