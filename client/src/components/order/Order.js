@@ -23,7 +23,7 @@ export default function Order() {
   };
 
   useEffect(() => {
-    if (!sessionStorage.getItem("order") || !localStorage.getItem("token")) {
+    if (!sessionStorage.getItem("order") || !sessionStorage.getItem("token")) {
       window.location.assign("/");
     }
 
