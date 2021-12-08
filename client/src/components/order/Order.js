@@ -106,10 +106,6 @@ export default function Order() {
   };
 
   const orderHandler = (e) => {
-    if (choosenAdress.adress === "") {
-      return alert("Please Pick an Adress!");
-    }
-
     let user = JSON.parse(sessionStorage.getItem("token"));
     let id = user.user._id;
     let now = new Date();
