@@ -1,3 +1,4 @@
+ /* eslint-disable */ 
 import React, { useEffect, useState } from "react";
 import pizza from "../../assets/pizza.png";
 import { Button } from "react-bootstrap";

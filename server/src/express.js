@@ -10,6 +10,8 @@ import authRoutes from "./routes/auth.routes";
 import userRoutes from "./routes/user.routes";
 import doughRoutes from "./routes/dough.routes";
 import ingredientsRoutes from "./routes/ingredients.routes";
+import historyRoutes from "./routes/history.routes";
+import adressRouter from "./routes/adress.routes";
 
 const app = express();
 
@@ -27,6 +29,8 @@ app.use("/", userRoutes);
 app.use("/", authRoutes);
 app.use("/", doughRoutes);
 app.use("/", ingredientsRoutes);
+app.use("/", historyRoutes);
+app.use("/", adressRouter);
 
 app.use((err, req, res, next) => {
   if (err.name === "UnauthorizedError") {

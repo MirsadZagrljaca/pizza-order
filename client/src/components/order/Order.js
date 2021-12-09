@@ -1,22 +1,26 @@
+ /* eslint-disable */ 
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
+import axios from "axios";
 
 export default function Order() {
   const [adress, setAdress] = useState([]);
   const [order, setOrder] = useState([]);
   const [isAdd, setIsAdd] = useState(false);
   const [values, setValues] = useState({
+    userId: "",
     adress: "",
     floor: "",
   });
   const [choosenAdress, setChoosenAdress] = useState({
+    userId: "",
     adress: "",
     floor: "",
   });
   const [choosenIndex, setchoosenIndex] = useState(0);
   const [total, seTtotal] = useState(0);
-  const [history, setHistory] = useState([]);
   const [render, setRender] = useState(false);
+  const [tempAdress, setTempAdress] = useState([]);
 
   const handleChange = (name) => (e) => {
     setValues({ ...values, [name]: e.target.value });
@@ -27,30 +31,36 @@ export default function Order() {
       window.location.assign("/");
     }
 
-    if (localStorage.getItem("adress")) {
-      setAdress(JSON.parse(localStorage.getItem("adress")));
-    }
-
     if (sessionStorage.getItem("order")) {
       setOrder(JSON.parse(sessionStorage.getItem("order")));
     }
 
-    if (localStorage.getItem("history")) {
-      setHistory(JSON.parse(localStorage.getItem("history")));
-    }
-
     setOrder(JSON.parse(sessionStorage.getItem("order")));
+
+    const token = JSON.parse(sessionStorage.getItem("token"));
+    const user = token.user._id;
+
+    setValues({ ...values, userId: user });
+
+    axios.get("http://localhost:5000/api/adress").then((resp) => {
+      setTempAdress(resp.data);
+    });
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("adress", JSON.stringify(adress));
-  }, [adress]);
+    const token = JSON.parse(sessionStorage.getItem("token"));
+    const id = token.user._id;
 
-  useEffect(() => {
-    if (history.length === 0) return;
+    let newAdress = [];
 
-    localStorage.setItem("history", JSON.stringify(history));
-  }, [history]);
+    for (let i = 0; i < tempAdress.length; i++) {
+      if (tempAdress[i].userId === id) {
+        newAdress.push(tempAdress[i]);
+      }
+    }
+
+    setAdress(newAdress);
+  }, [tempAdress]);
 
   useEffect(() => {
     if (order.length === 0) return;
@@ -66,26 +76,41 @@ export default function Order() {
 
   const addAdress = (e) => {
     if (values.adress !== "" || values.floor !== "") {
-      if (adress.length === 0) {
-        setAdress([values]);
-      } else {
-        setAdress([...adress, values]);
-      }
+      setAdress([values]);
+
+      const data = {
+        userId: values.userId,
+        adress: values.adress,
+        floor: values.floor,
+      };
+
+      axios
+        .post("http://localhost:5000/api/adress", data)
+        .then((resp) => {
+          setAdress([...adress, resp.data]);
+        })
+        .catch((err) => console.log(err));
+
       setIsAdd(false);
     }
   };
 
   const removeAdress = (index, e) => {
     let tempAdresses = [];
+    let id = "";
 
     adress.map((v, i) => {
       if (i !== index) {
         tempAdresses.push(v);
+      } else {
+        id = v._id;
       }
     });
 
-    localStorage.setItem("adress", tempAdresses);
     setAdress(tempAdresses);
+    axios
+      .delete(`http://localhost:5000/api/adress/${id}`)
+      .then((resp) => console.log(resp.data));
   };
 
   const chooseAdress = (index, e) => {
@@ -130,6 +155,10 @@ export default function Order() {
       }
     }
 
+    if (ingredients.length === 0) {
+      ingredients = "No Ingredients";
+    }
+
     let tempHistory = {
       userId: id,
       total: total,
@@ -139,15 +168,13 @@ export default function Order() {
       times: order[0].times,
     };
 
-    if (history.length === 0) {
-      setHistory([tempHistory]);
-      sessionStorage.removeItem("order");
-      window.location.assign("/history");
-    } else {
-      setHistory([...history, tempHistory]);
-      sessionStorage.removeItem("order");
-      window.location.assign("/history");
-    }
+    axios
+      .post("http://localhost:5000/api/history", tempHistory)
+      .then((response) => {
+        sessionStorage.removeItem("order");
+        window.location.assign("/history");
+      })
+      .catch((err) => console.log(err));
   };
 
   const plus = (index, e) => {

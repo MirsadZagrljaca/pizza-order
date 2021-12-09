@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Modal, ModalBody, ModalTitle, Button, Alert } from "react-bootstrap";
+import React, { useState } from "react";
+import { Modal, ModalBody, ModalTitle, Button } from "react-bootstrap";
 
 export default function Ingredients({
   modalIsOn,

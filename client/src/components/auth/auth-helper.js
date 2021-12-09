@@ -1,3 +1,4 @@
+/* eslint-disable */
 function authenticate(token, callback) {
   if (typeof window !== "undefined")
     sessionStorage.setItem("token", JSON.stringify(token));

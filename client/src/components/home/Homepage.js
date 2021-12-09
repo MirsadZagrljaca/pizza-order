@@ -1,4 +1,5 @@
-import { Button, Alert } from "react-bootstrap";
+ /* eslint-disable */ 
+import { Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { getDough } from ".././apis/api-dough";
 import { getIngredients } from ".././apis/api-ingredients";
@@ -23,7 +24,6 @@ export default function Homepage({
     times: 0,
   });
   const [totalPrice, setTotalPrice] = useState(0);
-  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     getDough().then((response) => {
@@ -101,7 +101,6 @@ export default function Homepage({
     }
 
     sessionStorage.setItem("order", JSON.stringify(orders));
-    setMsg("");
 
     window.location.assign("/order");
   };
@@ -164,27 +163,6 @@ export default function Homepage({
           </div>
         )}
       </div>
-
-      {msg !== "" && (
-        <div
-          style={{
-            width: "100%",
-          }}
-        >
-          <Alert
-            variant="danger"
-            style={{
-              marginLeft: "40%",
-              marginRight: "5%",
-              width: "100%",
-              marginTop: "25px",
-              textAlign: "center",
-            }}
-          >
-            {msg}
-          </Alert>
-        </div>
-      )}
 
       <div>
         <Ingredients

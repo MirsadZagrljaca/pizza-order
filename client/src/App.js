@@ -1,3 +1,4 @@
+ /* eslint-disable */ 
 import React, { useState } from "react";
 import Header from "./components/core/Header";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
@@ -66,6 +67,7 @@ function App() {
                 setOrders={setOrders}
                 isOrderOn={isOrderOn}
                 setisOrderOn={setIsOrderOn}
+                openSignIn={openModal}
               />
             }
           />
